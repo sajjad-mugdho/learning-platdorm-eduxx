@@ -3,10 +3,21 @@ import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const { loginEmailPass } = useContext(AuthContext);
+    const { loginEmailPass, signUpGoogle } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogle = () => {
+        signUpGoogle(googleProvider).then(result => {
+            const user = result.user;
+            console.log(user);
+        }).catch(error => console.error(error))
+    }
+
 
     const handleEmailPass = (e) => {
         e.preventDefault();
@@ -36,7 +47,7 @@ const Login = () => {
                 <br />
                 <input className='mb-2 btn  btn-primary' type="submit" value="Login" />
 
-                <button className='mb-2 btn btn-outline btn-accent'> <FaGoogle /> Login With Google</button>
+                <button onClick={handleGoogle} className='mb-2 btn btn-outline btn-accent'> <FaGoogle /> Login With Google</button>
                 <button className='mb-2 btn btn-outline '> <FaGithub />  Login With GitHub</button>
 
 

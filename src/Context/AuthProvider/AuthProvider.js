@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider)
     }
 
-    const authInfo = { user, userWithEmailPass, loginEmailPass }
+    const authInfo = { user, userWithEmailPass, loginEmailPass, signUpGoogle }
 
 
 
