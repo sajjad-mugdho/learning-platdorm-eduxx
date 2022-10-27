@@ -9,6 +9,7 @@ import FAQ from './Pages/FAQ/FAQ/FAQ';
 import Blog from './Pages/Blog/Blog/Blog';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
+import Course from './Shared/Course/Course';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           element: <Courses></Courses>,
           loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
         },
+
         {
           path: '/blog',
           element: <Blog></Blog>
