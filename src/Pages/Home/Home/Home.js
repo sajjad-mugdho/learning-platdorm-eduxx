@@ -1,11 +1,10 @@
 import React from 'react';
-import brand1 from '../../../Assets/Images/hero1.jpg';
 import brand2 from '../../../Assets/Images/hero2.jpg';
 
 const Home = () => {
     return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
+        <div className='mx-5 '>
+            <div className="hero min-h-screen rounded-lg bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
 
                     <img src={brand2} className="max-w-sm rounded-lg shadow-2xl" />

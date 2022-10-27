@@ -1,34 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const { loginEmailPass, signUpGoogle } = useContext(AuthContext);
+    const { loginEmailPass, signUpGoogle, signupGitHub } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider()
 
+
+    // Google Handle
     const handleGoogle = () => {
         signUpGoogle(googleProvider).then(result => {
             const user = result.user;
             console.log(user);
+            navigate('/')
         }).catch(error => console.error(error))
     }
-
+    // GitHub Handle 
+    const handleGitHub = () => {
+        signupGitHub(githubProvider).then(result => {
+            const user = result.user;
+            console.log(user);
+        }).catch(error => console.error(error))
+    }
 
     const handleEmailPass = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        console.log(email, password);
+        form.reset()
 
         loginEmailPass(email, password).then(result => {
             const user = result.user;
             console.log(user)
+
         }).catch(error => console.error(error));
     }
     return (
@@ -48,7 +61,7 @@ const Login = () => {
                 <input className='mb-2 btn  btn-primary' type="submit" value="Login" />
 
                 <button onClick={handleGoogle} className='mb-2 btn btn-outline btn-accent'> <FaGoogle /> Login With Google</button>
-                <button className='mb-2 btn btn-outline '> <FaGithub />  Login With GitHub</button>
+                <button onClick={handleGitHub} className='mb-2 btn btn-outline '> <FaGithub />  Login With GitHub</button>
 
 
                 <p>Don't have a account? <Link to={'/signup'} > <span className='text-blue-700 font-semibold'>Sign Up Please</span></Link> </p>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
@@ -8,6 +8,8 @@ const SignUp = () => {
 
     const { userWithEmailPass } = useContext(AuthContext);
 
+    const navigate = useNavigate()
+
     const handleEmailPass = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -15,10 +17,14 @@ const SignUp = () => {
         const email = form.email.value;
         const photoURL = form.photoUrl.value;
         const password = form.password.value;
+
+        form.reset()
+        navigate('/')
         console.log(name, email, password)
         userWithEmailPass(email, password).then(result => {
             const user = result.user;
             console.log(user)
+
         }).catch(error => console.error(error));
 
     }

@@ -1,22 +1,28 @@
 import React from 'react';
 import { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
+
 const Header = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
     return (
 
-        <div className="navbar mb-3 flex justify-between bg-primary text-primary-content">
+        <div className="navbar mb-3 flex justify-between bg-gradient-to-r from-green-300 to-purple-400 text-primary-content">
             <Link className="btn btn-ghost normal-case text-2xl ml-5" to={'/'}>Eduxx</Link>
             <div className='mr-5'>
-                <p>{user.displayName}</p>
+
                 <button className='btn btn-ghost'><Link to={'/'}>Home</Link></button>
                 <button className='btn btn-ghost'><Link to={'/courses'}>Courses</Link></button>
                 <button className='btn btn-ghost'><Link to={'/blog'}>Blog</Link></button>
-                <button className='btn btn-ghost'><Link to={'/login'}>Login</Link></button>
-                <button className='btn btn-ghost'><Link to={'/signup'}>SignUp</Link></button>
+
+
+                {user?.displayName ? <button onClick={logOut} className='btn btn-ghost'>signOut</button> : <button className='btn btn-ghost'><Link to={'/login'}>Login</Link></button>}
+
+
+                {user?.displayName ? <button onClick={logOut} className='btn btn-ghost'>Sign Out</button> : <button className='btn btn-ghost'><Link to={'/signup'}>SignUp</Link></button>}
                 <button className='btn btn-ghost'><Link to={'/faq'}>FAQ</Link></button>
                 <div>
                     <label className="swap swap-rotate">
