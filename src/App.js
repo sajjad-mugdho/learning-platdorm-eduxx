@@ -20,11 +20,19 @@ function App() {
 
         {
           path: '/',
-          element: <Home></Home>
+          element: <Home></Home>,
+          loader: () => fetch('http://localhost:5000/courses'),
         },
         {
           path: '/courses',
-          element: <Courses></Courses>
+          element: <Courses></Courses>,
+          loader: () => fetch('http://localhost:5000/courses'),
+
+        },
+        {
+          path: '/courses/:id',
+          element: <Courses></Courses>,
+          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
         },
         {
           path: '/blog',
@@ -46,9 +54,11 @@ function App() {
       ]
 
     }
-  ])
+  ]);
+
+
   return (
-    <div className='' >
+    <div className=' bg-gradient-to-r from-green-100 via-blue-200 to-purple-300 bg-fixed ' >
       <RouterProvider router={routes}></RouterProvider>
     </div>
   );

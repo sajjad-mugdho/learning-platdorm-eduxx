@@ -10,7 +10,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     return (
 
-        <div className="navbar mb-3 flex justify-between bg-gradient-to-r from-green-300 to-purple-400 text-primary-content">
+        <div className="navbar  mb-3 flex justify-between bg-gradient-to-r from-green-300 to-purple-400 text-primary-content">
             <Link className="btn btn-ghost normal-case text-2xl ml-5" to={'/'}>Eduxx</Link>
             <div className='mr-5'>
 
