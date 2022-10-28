@@ -12,6 +12,7 @@ const Login = () => {
 
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/';
+
     const [error, setError] = useState('');
 
     const navigate = useNavigate()
@@ -50,7 +51,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        form.reset()
+
 
 
         loginEmailPass(email, password).then(result => {
@@ -58,6 +59,7 @@ const Login = () => {
             console.log(user)
             setError('')
             navigate(from, { replace: true })
+            form.reset()
 
         }).catch(error => {
             console.error(error)

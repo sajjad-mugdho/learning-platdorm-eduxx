@@ -9,9 +9,9 @@ import FAQ from './Pages/FAQ/FAQ/FAQ';
 import Blog from './Pages/Blog/Blog/Blog';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
-import Course from './Shared/Course/Course';
 import CourseDetails from './Pages/CourseDetails/CourseDetails';
 import PrivateRoute from './Routes/Routes/PrivateRoute';
+import CheckOutRoute from './Routes/Routes/CheckOutRoute';
 
 
 function App() {
@@ -36,6 +36,11 @@ function App() {
           path: '/courses/:id',
           element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+        },
+        {
+          path: 'checkout/:id',
+          element: <PrivateRoute><CheckOutRoute></CheckOutRoute></PrivateRoute>,
+          loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`)
         },
 
         {
