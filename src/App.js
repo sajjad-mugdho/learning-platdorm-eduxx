@@ -10,6 +10,8 @@ import Blog from './Pages/Blog/Blog/Blog';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Course from './Shared/Course/Course';
+import CourseDetails from './Pages/CourseDetails/CourseDetails';
+import PrivateRoute from './Routes/Routes/PrivateRoute';
 
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
         },
         {
           path: '/courses/:id',
-          element: <Courses></Courses>,
+          element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
           loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
         },
 
@@ -60,7 +62,7 @@ function App() {
 
 
   return (
-    <div className=' bg-gradient-to-r from-green-100 via-blue-200 to-purple-300 bg-fixed ' >
+    <div className='bg-fixed bg-gradient-to-r from-green-100 via-blue-200 to-purple-300'>
       <RouterProvider router={routes}></RouterProvider>
     </div>
   );

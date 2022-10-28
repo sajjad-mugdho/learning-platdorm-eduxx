@@ -20,7 +20,7 @@ const RightSidebar = () => {
 
 
     return (
-        <div className='sticky top-5' >
+        <div className='sticky top-5 ' >
             <div className="card  bg-gradient-to-r from-green-100 via-blue-200 to-purple-300 w-50 shadow-xl">
                 <figure className=" pt-5">
                     {user?.displayName ? <img src={user?.photoURL} alt="Shoes" className="rounded-full" /> : <FaUserAlt />}

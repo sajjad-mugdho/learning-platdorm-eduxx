@@ -23,7 +23,7 @@ const Home = () => {
             </div>
             <div>
 
-                <div className='ml-10 my-10 grid grid-cols-2 gap-5'>
+                <div className='ml-10 my-10 grid lg:grid-cols-2 sm:grid-col-1 gap-5'>
                     {
                         courses.map(course => <Course key={course.id}
                             course={course}></Course>)
