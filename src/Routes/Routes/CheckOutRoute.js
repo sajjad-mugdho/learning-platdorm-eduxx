@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const CheckOutRoute = () => {
     const courses = useLoaderData()
-    const { id, name, details, img, price } = courses;
+    const { name, img, price } = courses;
 
     return (
         <div>

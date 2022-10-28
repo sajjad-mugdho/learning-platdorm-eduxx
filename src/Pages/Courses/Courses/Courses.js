@@ -7,7 +7,7 @@ const Courses = () => {
     const courses = useLoaderData();
 
     return (
-        <div className='ml-10 my-10 grid grid-cols-2 gap-5'>
+        <div className='grid lg:grid-cols-2 lg:ml-10 lg:my-10 md:grid-cols-1 sm:grid-cols-2 sm:mx-3 sm:my-3   gap-5'>
 
             {
                 courses.map(course => <Course course={course}></Course>)

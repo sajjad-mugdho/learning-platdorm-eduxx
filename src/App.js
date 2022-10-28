@@ -12,6 +12,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import CourseDetails from './Pages/CourseDetails/CourseDetails';
 import PrivateRoute from './Routes/Routes/PrivateRoute';
 import CheckOutRoute from './Routes/Routes/CheckOutRoute';
+import Page404 from './Page404/Page404';
 
 
 function App() {
@@ -24,23 +25,23 @@ function App() {
         {
           path: '/',
           element: <Home></Home>,
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://eduxx-server.vercel.app/courses'),
         },
         {
           path: '/courses',
           element: <Courses></Courses>,
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://eduxx-server.vercel.app/courses'),
 
         },
         {
           path: '/courses/:id',
           element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+          loader: ({ params }) => fetch(`https://eduxx-server.vercel.app/courses/${params.id}`)
         },
         {
           path: 'checkout/:id',
           element: <PrivateRoute><CheckOutRoute></CheckOutRoute></PrivateRoute>,
-          loader: ({ params }) => fetch(`http://localhost:5000/checkout/${params.id}`)
+          loader: ({ params }) => fetch(`https://eduxx-server.vercel.app/checkout/${params.id}`)
         },
 
         {
@@ -60,14 +61,18 @@ function App() {
           element: <FAQ></FAQ>
         },
 
-      ]
+      ],
 
+    },
+    {
+      path: "*",
+      element: <Page404></Page404>
     }
   ]);
 
 
   return (
-    <div className='bg-fixed bg-gradient-to-r from-green-100 via-blue-200 to-purple-300'>
+    <div className='   bg-gradient-to-r from-green-100 via-blue-200 to-purple-300'>
       <RouterProvider router={routes}></RouterProvider>
     </div>
   );

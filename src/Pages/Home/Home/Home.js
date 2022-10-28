@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import brand2 from '../../../Assets/Images/hero2.jpg';
 import Course from '../../../Shared/Course/Course';
 
@@ -17,7 +17,7 @@ const Home = () => {
                     <div>
                         <h1 className="text-5xl font-bold">EduXXX E-Learning Platform</h1>
                         <p className="py-6">EduXxx has a new personality and a redefined user experience that improves online teaching and learning for educators, learners and administrators.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <button className="btn btn-primary"><Link to={'/login'}>Get Started</Link></button>
                     </div>
                 </div>
             </div>

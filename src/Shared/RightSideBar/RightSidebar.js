@@ -13,7 +13,7 @@ const RightSidebar = () => {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses-categories').then(res => res.json()).then(data => setCategory(data));
+        fetch('https://eduxx-server.vercel.app/courses-categories').then(res => res.json()).then(data => setCategory(data));
     }, [])
 
     const { user, logOut } = useContext(AuthContext)
@@ -21,7 +21,7 @@ const RightSidebar = () => {
 
     return (
         <div className='sticky top-5 ' >
-            <div className="card  bg-gradient-to-r from-green-100 via-blue-200 to-purple-300 w-50 shadow-xl">
+            <div className="card bg-gradient-to-r from-green-100 via-blue-200 to-purple-300 w-50 shadow-xl">
                 <figure className=" pt-5">
                     {user?.displayName ? <img src={user?.photoURL} alt="Shoes" className="rounded-full" /> : <FaUserAlt />}
                 </figure>
